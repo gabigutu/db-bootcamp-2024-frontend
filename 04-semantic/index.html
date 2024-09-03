@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Semantic HTML</title>
+
+    <style>
+        main>nav {
+            background-color: bisque;
+            float: left;
+            width: 20%;
+        }
+
+        main>article {
+            background-color: aquamarine;
+            float: left;
+            width: 60%;
+        }
+        main>article>div {
+            border: 1px solid black;
+        }
+
+        main>aside {
+            background-color: darkkhaki;
+            float: left;
+            width: 20%;
+        }
+
+        footer {
+            clear: both;
+        }
+        span.element {
+            display: inline-block;
+            background-color: crimson;
+            width: 200px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <div>Logo</div>
+
+        <nav>
+            Meniu header
+        </nav>
+    </header>
+    <main>
+        <nav>Meniu principal</nav>
+        <article>
+            <div>
+                <header>
+                    <h2>Furtuna la mare</h2>
+                </header>
+                <div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <span class="element">Laborum</span>, dicta, totam, odio perspiciatis
+                        iste quo harum a dolores molestiae soluta ducimus! Ab adipisci sequi et exercitationem eveniet
+                        facere corrupti rerum!</p>
+                </div>
+                <footer>Scris de: Adelin Petrisor</footer>
+            </div>
+        </article>
+        <aside>
+            Reclame
+        </aside>
+    </main>
+    <footer>Footer website &copy; 2024</footer>
+
+</body>
+
+</html>

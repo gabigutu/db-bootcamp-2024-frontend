@@ -1,0 +1,18 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<curs>
+    <!-- XML for Mobile Academy course -->
+    <trainer>
+        <name>Gabriel Guțu-Robu &amp; Vasilica</name>
+    </trainer>
+    <students>
+        <student>
+            <name>Alexandru Kullman</name>
+        </student>
+        <student>
+            <name>Oana Ionescu</name>
+        </student>
+    </students>
+    <copy>
+        Copyright &gt; 2024 &#945;
+    </copy>
+</curs>

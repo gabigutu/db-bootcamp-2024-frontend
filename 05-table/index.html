@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+
+    <style>
+        tbody tr:nth-child(odd) {
+            background-color: palegoldenrod;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #ccc;
+        }
+
+        /* coloana a doua din fiecare rand, prima litera */
+        tbody td:nth-child(2)::first-letter {
+            color: #333; /* 333333 */
+            font-size: 2em;
+        }
+
+        blockquote {
+            background-color: #ccc;
+            border: 2px double black;
+            padding: 20px 10px;
+            margin: 20px 5px 40px;
+            font-family: cursive;
+        }
+
+        blockquote::before {
+            content: "\"";
+            font-size: 4em;
+            color: rgb(125, 201, 12);
+        }
+        blockquote::after {
+            background-color: rgba(255, 0, 0, .3);
+            content: "(end) \"";
+            font-size: 4em;
+            color: #7DC90C;
+        }
+        .author {
+            text-align: right;
+            font-size: 3em;
+            font-style: italic;
+        }
+        .author::before {
+            content: "-";
+        }
+
+        .fear {
+            display: none;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nume</th>
+                <th>02.09</th>
+                <th>03.09</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>76</td>
+                <td>Vasilica</td>
+                <td>Da</td>
+                <td>Da</td>
+            </tr>
+            <tr>
+                <td>89</td>
+                <td>George</td>
+                <td>Nu</td>
+                <td>Da</td>
+            </tr>
+            <tr>
+                <td>70</td>
+                <td>Daniel</td>
+                <td>Da</td>
+                <td>Da</td>
+            </tr>
+            <tr>
+                <td>101</td>
+                <td>Alexandra</td>
+                <td>Nu</td>
+                <td>Da</td>
+            </tr>
+            <tr>
+                <td>123</td>
+                <td>Diana</td>
+                <td>Nu</td>
+                <td>Da</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">Nr. prezenti:</td>
+                <td>1</td>
+                <td>2</td>
+            </tr>
+        </tfoot>
+    </table>
+
+
+    <blockquote>
+        Be yourself; everyone else is already taken.
+    </blockquote>
+    <div class="author">
+        Oscar Wilde
+    </div>
+
+    <div class="fear">I am afraid of nothing.</div>
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+/* Selectors */
+#menu-main {
+    background-color: bisque;
+}
+
+.evidentiat {
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+}
+
+[type] {
+    background-color: beige;
+}
+
+[type="password"] {
+    background-color: darksalmon;
+}
+
+p.evidentiat {
+    color: red;;
+}
+
+section p.evidentiat { /* copil, nepot, etc. */
+    background-color: yellow;
+}
+
+section > p.evidentiat { /* copil */
+    font-weight: bold;
+    font-size: 2em;
+}
+
+/* Pseudo selectors */
+a:hover {
+    color: green;
+}
+a:visited {
+    color: pink;
+    /* text-decoration: line-through; */
+}
+a:active {
+    color: red;;
+}
+a:focus {
+    color: purple;
+}
+
+footer li:first-child>a {
+    font-size: 1.5em;
+}
+footer li:last-child {
+    background-color: gray;
+}
+footer li:nth-child(2) {
+    background-color: aquamarine;
+}
+/* Pseudo elements */

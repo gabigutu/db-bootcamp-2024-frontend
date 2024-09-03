@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Form</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* CSS */
+        h1 {
+            color: red;
+            font-size: 30px;
+        }
+
+        h2 {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Register Form</h1>
+
+    <form action="http://localhost:8090/register-account" method="post" enctype="multipart/form-data">
+
+        <h2>Personal Data</h2>
+
+        <p>
+            <label for="register_first_name">Prenume:</label>
+            <input id="register_first_name" type="text" name="prenume">
+        </p>
+
+        <p>
+            <label for="register_last_name">Nume:</label>
+            <input id="register_last_name" name="nume_familie">
+        </p>
+
+        <p>
+            Gen:
+            <input id="gen_feminin" type="radio" name="gen" value="f">
+            <label for="gen_feminin">Feminin</label>
+
+            <input id="gen_masculin" type="radio" name="gen" value="m">
+            <label for="gen_masculin">Masculin</label>
+
+            <input id="gen_nb" type="radio" name="gen" value="u" checked>
+            <label for="gen_nb" style="color: green;
+            font-size: 24px;">Non-binary</label>
+        </p>
+
+        <p>
+            <label for="register_birthday">Data nasterii:</label>
+            <input id="register_birthday" type="date" name="birthday">
+        </p>
+
+        <p>
+            <label for="register_age">Varsta:</label>
+            <input id="register_age" type="number" name="age" min="14" max="100" step="0.5">
+        </p>
+
+        <p>
+            <label for="register_email">Adresa e-mail:</label>
+            <input id="register_email" type="email" name="email" required>
+        </p>
+
+        <p>
+            <label for="register_username">Username:</label>
+            <input id="register_username" type="text" name="username">
+
+            <button type="button">Verifica username (HTML 5)</button>
+            <input type="button" value="Verifica username (HTML 4)">
+        </p>
+
+        <p>
+            <label for="register_password">Parola:</label>
+            <input id="register_password" type="password" name="parola">
+        </p>
+
+        <p>
+            <label for="register_photo">Poza profil:</label>
+            <input id="register_photo" type="file" name="poza_utilizator">
+        </p>
+
+        <p>
+            <label for="register_start_hour">Ore de start lucru:</label>
+            <input id="register_start_hour" type="range" name="ora_lucru" min="8" max="14">
+        </p>
+
+        <input type="hidden" name="referral" value="vasile9274">
+
+
+
+        <h2>Delivery Address</h2>
+
+
+        <p>
+            <input id="acord_terms" type="checkbox" name="acord" value="acord_termeni">
+            <label for="acord_terms">Sunt de acord cu termnii si conditiile</label>
+        </p>
+
+        <p>
+            <input id="acord_conf" type="checkbox" name="acord" value="acord_confidentialitate">
+            <label for="acord_conf">Sunt de acord cu politica de confidentialitate</label>
+        </p>
+
+        <p>
+            <input id="acord_news" type="checkbox" name="acord" value="acord_newsletter" checked>
+            <label for="acord_news">Sunt de acord sa ma abonez la newsletter</label>
+        </p>
+
+        <!-- ... -->
+
+        <button>Trimite (HTML 5)</button><!-- button de tip submit -->
+        <input type="submit" value="Trimite (HTML 4)">
+
+        <button type="reset">Sterge datele (HTML 5)</button>
+        <input type="reset" value="Sterge datele (HTML 4)">
+        
+        <!-- reguli de validare -->
+
+    </form>
+
+</body>
+
+</html>
