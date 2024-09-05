@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print CSS</title>
+
+    <style>
+        p {
+            font-size: 14px;
+        }
+
+        aside {
+            background-color: aquamarine;
+            padding: 1rem; /* 16px */
+            font-size: 1.5em; /* 1.5 * 16px = 24px */
+        }
+
+        @media print {
+            p {
+                font-size: 24px;
+            }
+            aside {
+                background-color: initial;
+                display: none;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus aliquam quidem atque ut laboriosam totam optio libero culpa saepe dignissimos omnis quae illum explicabo quam molestias, pariatur debitis, illo corporis?</p>
+
+    <aside>Reclame</aside>
+    
+</body>
+</html>

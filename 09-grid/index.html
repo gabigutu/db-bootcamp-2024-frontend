@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Layout</title>
+
+    <style>
+        body {
+            display: grid;
+            grid-template-columns: 2fr 5fr 1fr;
+            grid-template-areas: 
+                'antet              antet            reclama-sus'
+                'meniu-principal    continut         continut'
+                'meniu-principal    reclama-continut reclama-continut'
+                'subsol             subsol           subsol'
+            ;
+            background-color: aquamarine;
+            gap: 5px;
+        }
+
+        body>* {
+            border: 1px solid black;
+            background-color: bisque;
+            padding: 10px;
+        }
+        body>header {
+            grid-area: antet;
+        }
+        body>aside {
+            grid-area: reclama-sus;
+        }
+        body>nav {
+            grid-area: meniu-principal;
+        }
+        body>main {
+            grid-area: continut;
+        }
+        body>#reclame-continut {
+            grid-area: reclama-continut;
+        }
+        body>footer {
+            grid-area: subsol;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>Logo</header>
+    <aside>Reclama (dreapta logo)</aside>
+
+    <nav>Meniu meniu meniu meniu meniu</nav>
+    <main>Continut</main>
+    <div id="reclame-continut">Reclame (sub continut)</div>
+
+    <footer>Footer</footer>
+
+</body>
+
+</html>

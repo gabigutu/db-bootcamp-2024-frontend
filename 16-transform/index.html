@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Transform</title>
+
+    <style>
+        .square {
+            background-color: red;
+            width: 100px;
+            height: 100px;
+            /* transition: transform 2000ms; */
+            transition-delay: 500ms;
+            transition-duration: 2000ms;
+            transition-timing-function: steps(10);
+            transition-property: transform;
+            border-top: 5px solid blue;
+        }
+        .square:hover {
+            transform: translate(50px, 200px) rotate(0.3turn) scale(1.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="square"></div>
+    
+</body>
+</html>

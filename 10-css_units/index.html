@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Units</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            font-size: 10px;
+        }
+
+        @media screen and (max-width: 414px) { /* Media query */
+            html {
+                font-size: 5px;
+            }
+        }
+
+        body {
+            font-size: 16px;
+        }
+
+        main {
+            font-size: 3em; /* 3 * inherited_font-size = 3 * 16 = 48px */
+            /* font-size: 2rem; */
+            /* 2 * root_font-size */
+            width: 80em; /* 80 * self_font-size = 80 * 2rem = 80 * 2 * 10 = 1600px  */
+            background-color: #ccc;
+            padding: 2rem;
+        }
+
+        
+    </style>
+</head>
+<body>
+    
+
+    <main>
+        Continut
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexBox</title>
+
+    <style>
+        #cursuri {
+            display: flex; /* flex container */
+            flex-direction: row-reverse;
+        }
+        #cursuri>div {
+            flex: 1; 
+            border: 1px solid black;
+            margin: 10px;
+        }
+        #cursuri .special {
+            flex: 2;
+        }
+
+        #produse {
+            display: flex;
+        }
+        #produse>div {
+            border: 1px solid black;
+            flex: 1;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        #produse>div>div {
+            flex: 1;
+            border: 1px solid red;
+        }
+
+    </style>
+</head>
+<body>
+
+    <section id="cursuri">
+        <div>
+            Java Intro
+            ...
+        </div>
+        <div class="special">
+            Java Spring
+        </div>
+        <div>
+            Frontend
+        </div>
+    </section>
+
+    <main id="produse">
+        <div>
+            <!-- 1 -->
+            <div>Produs 1.1</div>
+            <div>Produs 1.2</div>
+            <div>Produs 1.3</div>
+        </div>
+        <div>
+            <!-- 2 -->
+            <div>Produs 2.1</div>
+            <div>Produs 2.2</div>
+            <div>Produs 2.3</div>
+        </div>
+        <div>
+            <!-- 3 -->
+        </div>
+    </main>
+    
+</body>
+</html>
