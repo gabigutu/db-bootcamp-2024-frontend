@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Model</title>
+
+    <style>
+        #nume-persoana {
+            color: red;
+            border: 1px solid black;
+        }
+    </style>
+
+    <script src="dom.js"></script>
+</head>
+
+<body>
+
+    <p>Salut, <span id="nume-persoana">Vasilica</span>!</p>
+
+    <img src="trail.jpg" height="100">
+
+    <div class="articol" title="Tooltip pentru primul articol">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque <b>aliquam</b> esse ex hic placeat dolorem
+        commodi laboriosam.
+    </div>
+
+    <div class="articol">
+        Sed nisi laudantium officia, odio similique <i>accusantium</i>, iusto dolorum reiciendis sint quaerat iste!
+    </div>
+
+    <div>Footer</div>
+
+    <p>Username:
+        <input name="username[]">
+    </p>
+    <p>Cursuri:</p>
+    <ul id="lista-cursuri">
+        <li>
+            <input type="checkbox" name="cursuri" value="java_intro" data-importanta="medie"> Java Intro
+        </li>
+        <li>
+            <input type="checkbox" name="cursuri" value="java_spring" data-importanta="mare"> Java Spring
+        </li>
+        <li>
+            <input type="checkbox" name="cursuri" value="frontend" data-importanta="mare"> Frontend
+        </li>
+    </ul>
+
+    <button onclick="aiDatClick();">Apasa-ma</button>
+
+    <button id="alt-buton">Alt buton</button>    
+
+</body>
+
+</html>

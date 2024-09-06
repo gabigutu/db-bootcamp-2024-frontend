@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubbling</title>
+</head>
+<body>
+
+    <article>
+        Lorem ipsum dolor sit amet consectetur adipisicing <em><span class="clickable">elit</span></em>. Minus, adipisci. Ex, autem dolorem? Facere, quis veritatis veniam quasi, corporis provident nesciunt dicta odit quas <em><span class="clickable">porro</span></em> voluptatibus vero excepturi quo accusantium?
+    </article>
+
+    <script>
+        const bodyElement = document.getElementsByTagName('body')[0];
+        const firstArticleElement = document.querySelector('article');
+        const clickableElements = document.getElementsByClassName('clickable');
+
+        bodyElement.onclick = function() {
+            console.log('ai dat click pe body');
+        }
+
+        firstArticleElement.onclick = function(event) {
+            console.log('ai dat click pe first article');
+            event.stopPropagation();
+        }
+
+        for (clickable of clickableElements) {
+            clickable.onclick = function() {
+                console.log('ai dat click pe un clickable element');
+            }
+        }
+
+
+    </script>
+    
+</body>
+</html>
