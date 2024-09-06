@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Lista</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <h1>Lista</h1>
+    <ul id="lista">
+        <li>Element 1</li>
+        <li>Element 2</li>
+        <li>Element 3</li>
+    </ul>
+    <div>
+        <input type="text" id="inputElement" placeholder="Adauga un element in lista!">
+        <button onclick="adaugareElement()">Adauga element</button>
+    </div>
+    <script>
+        function adaugareElement() {
+            const input = document.getElementById('inputElement');
+            if (input == null) {
+                alert('Elementul nu apare in pagina!');
+                return;
+            }
+
+            let valoare = input.value;
+            console.log(typeof "");
+            valoare = valoare.trim();
+            if (valoare !== "") {
+                const lista = document.getElementById('lista');
+                const element = document.createElement('li');
+                element.innerText = valoare;
+                lista.appendChild(element);
+                input.value = '';
+            }
+        }
+    </script>
+</body>
+</html>
