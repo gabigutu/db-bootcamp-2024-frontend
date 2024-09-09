@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Class</title>
+</head>
+<body>
+
+    <button id="buton-oprire">Opreste</button>
+    <button id="buton-stopradar">Anuleaza radar</button>
+
+    <script>
+        class Masina {
+            constructor(make, model) {
+                this.make = make;
+                this.model = model;
+                this.speed = 0;
+            }
+
+            accelerate() {
+                this.speed += 5;
+            }
+        }
+
+        let dacia = new Masina("Dacia", "Dokker");
+
+        let intervalAcceleratie = setInterval(function() {
+            dacia.accelerate();
+            console.log(dacia, dacia.make, dacia.model);
+            // if (dacia.speed >= 100) {
+            //     clearInterval(intervalAcceleratie);
+            // }
+        }, 500);
+
+        const elemButonOprire = document.querySelector('#buton-oprire');
+        elemButonOprire.ondblclick = function() {
+            console.log('Voi opri masina');
+            clearInterval(intervalAcceleratie);
+        }
+
+        const minSeconds = 2;
+        const maxSeconds = 8;
+        let noSeconds = Math.random() * (maxSeconds - minSeconds) + minSeconds; // [0; 1) * 6 => [0; 6) + 2 => [2; 8)
+        console.log(`Radar time = ${noSeconds}`)
+        /* 2s - 8s */
+        let timeoutRadar = setTimeout(function() {
+            console.log('Radar')
+        }, noSeconds * 1000);
+
+        const elemButonStopRadar = document.getElementById('buton-stopradar');
+        elemButonStopRadar.onmouseover = () => {
+            console.log('Radarul a plecat acasa');
+            clearTimeout(timeoutRadar);
+        }
+
+
+    </script>
+    
+</body>
+</html>
