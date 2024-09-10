@@ -2,28 +2,40 @@ import { Component } from "react";
 
 class Todo extends Component {
 
-    urlBase = 'https://jsonplaceholder.typicode.com/todos';
+    urlBase = 'https://jsonplaceholder.typicode.com';
+
+
 
     constructor() {
         super();
         this.state = {
-            todos: []
+            todos: [],
+            users: []
         }
+       
     }
 
     componentDidMount() {
         this.fetchTodos();
+        this.fetchUsers();
     }
 
     fetchTodos = async () => {
-        const response = await fetch(this.urlBase);
+        const response = await fetch(this.urlBase+'/todos');
         const todos = await response.json();
         // console.log(todos);
         this.setState({
             todos: todos
         });
     }
-
+    fetchUsers = async () => {
+        const response = await fetch(this.urlBase+'/users');
+        const users = await response.json();
+        console.log(users);
+        this.setState({
+            users: users
+        });
+    }
     fetchUpdateTodo = async (index) => {
         const url = this.urlBase + "/" + index;
         const response = await fetch(url, {
@@ -83,6 +95,7 @@ class Todo extends Component {
                             <th>ID</th>
                             <th>Title</th>
                             <th>Completed</th>
+                            <th>User</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -95,6 +108,12 @@ class Todo extends Component {
                                 </td>
                                 <td>
                                     <button onClick={() => this.sterge(index)}>Delete</button>
+                                </td>
+                                <td>
+                                    {
+                                    this.state.users.find( user => {
+                                        return user.id ===todo.userId
+                                    }).name}
                                 </td>
                             </tr>
                         })}
