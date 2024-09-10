@@ -34,6 +34,17 @@ class Todo extends Component {
         console.log(todoResponse)
     }
 
+    fetchDeleteTodo = async (index) => {
+        const url = this.urlBase + "/" + this.state.todos[index].id;
+        const response = await fetch(url, {
+            method: 'DELETE'
+        });
+        const todoResponse = await response.json();
+        console.log(todoResponse)
+    }
+
+
+
     sayHello() {
         console.log('hello');
     }
@@ -50,6 +61,14 @@ class Todo extends Component {
             todos: this.state.todos
         })
         this.fetchUpdateTodo(index);
+    }
+
+    sterge(index){
+        this.state.todos.splice(index, 1);
+        this.setState({
+            todos: this.state.todos
+        })
+        this.fetchDeleteTodo(index);
     }
 
     render() {
@@ -73,6 +92,9 @@ class Todo extends Component {
                                 <td>{todo.title}</td>
                                 <td>
                                     <input type="checkbox" checked={todo.completed} onChange={this.bifeaza.bind(this,index)}></input>
+                                </td>
+                                <td>
+                                    <button onClick={() => this.sterge(index)}>Delete</button>
                                 </td>
                             </tr>
                         })}
