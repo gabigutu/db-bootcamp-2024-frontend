@@ -1,9 +1,11 @@
 import { Component } from "react";
+import { formatDate } from "date-fns";
 
 class Todo extends Component {
 
     urlBase = 'https://jsonplaceholder.typicode.com';
     noSuccededRequests = 0;
+    nowDate = null;
 
     constructor() {
         super();
@@ -11,6 +13,9 @@ class Todo extends Component {
             todos: [],
             users: []
         }
+        this.nowDate = new Date().toString();
+        this.nowDate = formatDate(this.nowDate, "dd/MM/yyyy");
+
     }
 
     logSuccededRequests() {
@@ -104,6 +109,7 @@ class Todo extends Component {
                             <th>Completed</th>
                             <th>Delete</th>
                             <th>User</th>
+                            <th>Date</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -123,6 +129,7 @@ class Todo extends Component {
                                         return user.id ===todo.userId
                                     })?.name || 'Loading...'} 
                                 </td>
+                                <td>{this.nowDate}</td>
                             </tr>
                         })}
                     </tbody>
