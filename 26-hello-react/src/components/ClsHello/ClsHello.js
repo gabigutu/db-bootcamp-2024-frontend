@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, createElement } from 'react';
 
 class ClsHello extends Component {
     constructor() {
@@ -21,17 +21,28 @@ class ClsHello extends Component {
     render() {
         console.log('ClsHello render');
         return (
-            <div>
-                <h1 className="hello">Cls Hello, {this.props.name}!</h1>
-                <p>Your age is {this.state.age}</p>
-            </div>
+            <>
+                <p>Alt paragarf</p>
+                <div>
+                    <h1 className="hello">Cls Hello, {this.props.name}!</h1>
+                    <p>Your age is {this.state.age}</p>
+                </div>
+            </>
         );
+        // const h1Elem = createElement('h1', {
+        //     className: 'hello'
+        // }, 'Cls Hello, ' + this.props.name);
+        // const pElem = createElement('p', {}, 'Your age is ' + this.state.age);
+        // return createElement('div', {
+        //     id: 'my-div',
+        //     className: 'class1 class2'
+        // }, [h1Elem, pElem]);
     }
 
     componentDidMount() {
-        setInterval(() => {
-            this.increaseAge();
-        }, 1000);
+        // setInterval(() => {
+        //     this.increaseAge();
+        // }, 1000);
         console.log('ClsHello mounted');
     }
 

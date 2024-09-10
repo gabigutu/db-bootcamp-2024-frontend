@@ -3,8 +3,7 @@ import { Component } from "react";
 class Todo extends Component {
 
     urlBase = 'https://jsonplaceholder.typicode.com';
-
-
+    noSuccededRequests = 0;
 
     constructor() {
         super();
@@ -12,18 +11,23 @@ class Todo extends Component {
             todos: [],
             users: []
         }
-       
+    }
+
+    logSuccededRequests() {
+        this.noSuccededRequests++;
+        console.log(`No of succeded requests: ${this.noSuccededRequests}`);
     }
 
     componentDidMount() {
-        this.fetchTodos();
         this.fetchUsers();
+        this.fetchTodos();
     }
 
     fetchTodos = async () => {
         const response = await fetch(this.urlBase+'/todos');
         const todos = await response.json();
         // console.log(todos);
+        this.logSuccededRequests();
         this.setState({
             todos: todos
         });
@@ -31,7 +35,8 @@ class Todo extends Component {
     fetchUsers = async () => {
         const response = await fetch(this.urlBase+'/users');
         const users = await response.json();
-        console.log(users);
+        // console.log(users);
+        this.logSuccededRequests();
         this.setState({
             users: users
         });
@@ -43,6 +48,7 @@ class Todo extends Component {
             body: JSON.stringify(this.state.todos[index])
         });
         const todoResponse = await response.json();
+        this.logSuccededRequests();
         console.log(todoResponse)
     }
 
@@ -52,10 +58,9 @@ class Todo extends Component {
             method: 'DELETE'
         });
         const todoResponse = await response.json();
+        this.logSuccededRequests();
         console.log(todoResponse)
     }
-
-
 
     sayHello() {
         console.log('hello');
@@ -79,12 +84,14 @@ class Todo extends Component {
         this.state.todos.splice(index, 1);
         this.setState({
             todos: this.state.todos
-        })
+        }, () => {
+            console.log('S-a sters elementul');
+        });
         this.fetchDeleteTodo(index);
     }
 
     render() {
-        console.log('Render Todo');
+        console.log('Rerendering Todo Component');
         return (
             <div>
                 <h2>Todos</h2>
@@ -95,6 +102,7 @@ class Todo extends Component {
                             <th>ID</th>
                             <th>Title</th>
                             <th>Completed</th>
+                            <th>Delete</th>
                             <th>User</th>
                         </tr>
                     </thead>
@@ -108,12 +116,12 @@ class Todo extends Component {
                                 </td>
                                 <td>
                                     <button onClick={() => this.sterge(index)}>Delete</button>
+                                    
                                 </td>
                                 <td>
-                                    {
-                                    this.state.users.find( user => {
+                                    {this.state.users.find( user => {
                                         return user.id ===todo.userId
-                                    }).name}
+                                    })?.name || 'Loading...'} 
                                 </td>
                             </tr>
                         })}

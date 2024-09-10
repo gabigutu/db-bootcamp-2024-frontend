@@ -5,11 +5,15 @@ import ClsHello from './components/ClsHello/ClsHello';
 import Todo from './components/Todo/Todo';
 
 function App() {
+  const car = {
+    make: 'Dacia',
+    model: 'Dokker'
+  };
   return (
     <main>
       <div className="App">
         <h1>Test</h1>
-        <Hello name="ionel"></Hello>
+        <Hello name="ionel" car={car}></Hello>
         {/* <ClsHello name="ionel"></ClsHello> */}
         <Todo></Todo>
       </div>
