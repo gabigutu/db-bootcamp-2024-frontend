@@ -1,5 +1,7 @@
 import { Component } from "react";
 import { formatDate } from "date-fns";
+import { Link } from 'react-router-dom';
+import fetchTodos from "../../services/todos-services";
 
 class Todo extends Component {
 
@@ -24,28 +26,24 @@ class Todo extends Component {
     }
 
     componentDidMount() {
-        this.fetchUsers();
-        this.fetchTodos();
+        const requestTodos = async () => {
+            const todos = await fetchTodos();
+            this.setState({
+                todos: todos
+            });
+        }
+
+        const requestUsers = async () => {
+            const users = await fetchUsers();
+            this.setState({
+                users: users
+            });
+        }
+        requestTodos();
+        requestUsers();
     }
 
-    fetchTodos = async () => {
-        const response = await fetch(this.urlBase+'/todos');
-        const todos = await response.json();
-        // console.log(todos);
-        this.logSuccededRequests();
-        this.setState({
-            todos: todos
-        });
-    }
-    fetchUsers = async () => {
-        const response = await fetch(this.urlBase+'/users');
-        const users = await response.json();
-        // console.log(users);
-        this.logSuccededRequests();
-        this.setState({
-            users: users
-        });
-    }
+
     fetchUpdateTodo = async (index) => {
         const url = this.urlBase + "/" + index;
         const response = await fetch(url, {
@@ -116,7 +114,7 @@ class Todo extends Component {
                         {this.state.todos.map((todo, index) => {
                             return <tr>
                                 <td>{todo.id}</td>
-                                <td>{todo.title}</td>
+                                <td><Link to={'/todo/' + todo.id}>{todo.title}</Link></td>
                                 <td>
                                     <input type="checkbox" checked={todo.completed} onChange={this.bifeaza.bind(this,index)}></input>
                                 </td>
