@@ -1,7 +1,8 @@
-import { Component } from "react";
 import { formatDate } from "date-fns";
+import { Component } from "react";
 import { Link } from 'react-router-dom';
 import fetchTodos, { fetchDeleteTodo, fetchUpdateTodo } from "../../services/todos-services";
+import fetchUsers from "../../services/users-service";
 
 class Todo extends Component {
 
