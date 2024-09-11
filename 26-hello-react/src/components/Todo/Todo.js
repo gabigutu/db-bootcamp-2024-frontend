@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { formatDate } from "date-fns";
 import { Link } from 'react-router-dom';
-import fetchTodos from "../../services/todos-services";
+import fetchTodos, { fetchDeleteTodo, fetchUpdateTodo } from "../../services/todos-services";
 
 class Todo extends Component {
 
@@ -45,53 +45,55 @@ class Todo extends Component {
             users: users
         });
     }
-    fetchUpdateTodo = async (index) => {
-        const url = this.urlBase + "/" + index;
-        const response = await fetch(url, {
-            method: 'PUT',
-            body: JSON.stringify(this.state.todos[index])
-        });
-        const todoResponse = await response.json();
-        this.logSuccededRequests();
-        console.log(todoResponse)
-    }
-
-    fetchDeleteTodo = async (index) => {
-        const url = this.urlBase + "/" + this.state.todos[index].id;
-        const response = await fetch(url, {
-            method: 'DELETE'
-        });
-        const todoResponse = await response.json();
-        this.logSuccededRequests();
-        console.log(todoResponse)
-    }
 
     sayHello() {
         console.log('hello');
     }
 
-    bifeaza(index) {
-        console.log('bifez indexul ' + index);
-        // const todo = this.state.todos[index];
-        // console.log('todo = ', todo);
-        // const oldChecked = this.state.todos[index].completed;
-        // console.log('was checked? ' + oldChecked);
-        
-        this.state.todos[index].completed = !this.state.todos[index].completed;
-        this.setState({
-            todos: this.state.todos
-        })
-        this.fetchUpdateTodo(index);
-    }
+    sendUpdateAndDisplay = async (todo) => {
+        const modifiedTodo = await fetchUpdateTodo(todo.id, todo);
+        // if (modifiedTodo.completed === this.state.todos[index].completed) {
+        if (true) { // obiectul confirmat are datele actualizate corect
+            this.setState({
+                todos: this.state.todos
+            })
+        } else {  // obiectul confirmat nu are datele actualizate corect
 
-    sterge(index){
-        this.state.todos.splice(index, 1);
+        }
+        todo.disabled = false;
+    };
+
+    bifeaza(index) {
+        const todo = this.state.todos[index];
+        todo.disabled = true;
         this.setState({
             todos: this.state.todos
         }, () => {
-            console.log('S-a sters elementul');
+            todo.completed = !todo.completed;
+            this.sendUpdateAndDisplay(todo);
         });
-        this.fetchDeleteTodo(index);
+    }
+
+
+    sendDeleteAndDisplay = async (index, todo) => {
+        const deletedTodo = await fetchDeleteTodo(todo.id);
+        if (JSON.stringify(deletedTodo) === JSON.stringify({})) {
+            this.state.todos.splice(index, 1);
+            this.setState({
+                todos: this.state.todos
+            });
+        }
+        todo.clickedDelete = false;
+    }
+
+    sterge(index){
+        const todo = this.state.todos[index];
+        todo.clickedDelete = true;
+        this.setState({
+            todos: this.state.todos
+        }, () => {
+            this.sendDeleteAndDisplay(index, todo);
+        });   
     }
 
     render() {
@@ -117,11 +119,10 @@ class Todo extends Component {
                                 <td>{todo.id}</td>
                                 <td><Link to={'/todo/' + todo.id}>{todo.title}</Link></td>
                                 <td>
-                                    <input type="checkbox" checked={todo.completed} onChange={this.bifeaza.bind(this,index)}></input>
+                                    <input type="checkbox" checked={todo.completed} onChange={this.bifeaza.bind(this,index)} disabled={todo.disabled}></input>
                                 </td>
                                 <td>
-                                    <button onClick={() => this.sterge(index)}>Delete</button>
-                                    
+                                    <button onClick={() => this.sterge(index)} disabled={todo.clickedDelete}>Delete</button>
                                 </td>
                                 <td>
                                     {this.state.users.find( user => {
