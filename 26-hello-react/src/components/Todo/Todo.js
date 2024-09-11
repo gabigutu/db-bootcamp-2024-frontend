@@ -26,24 +26,41 @@ class Todo extends Component {
     }
 
     componentDidMount() {
-        this.fetchUsers();
-        const request = async () => {
+        const requestTodos = async () => {
             const todos = await fetchTodos();
             this.setState({
                 todos: todos
             });
         }
-        request();
+        const requestUsers = async () => {
+            const users = await fetchUsers();
+            this.setState({
+                users: users
+            });
+        }
+        requestTodos();
+        requestUsers();
     }
 
-    fetchUsers = async () => {
-        const response = await fetch(this.urlBase+'/users');
-        const users = await response.json();
-        // console.log(users);
-        this.logSuccededRequests();
-        this.setState({
-            users: users
+    fetchUpdateTodo = async (index) => {
+        const url = this.urlBase + "/" + index;
+        const response = await fetch(url, {
+            method: 'PUT',
+            body: JSON.stringify(this.state.todos[index])
         });
+        const todoResponse = await response.json();
+        this.logSuccededRequests();
+        console.log(todoResponse)
+    }
+
+    fetchDeleteTodo = async (index) => {
+        const url = this.urlBase + "/" + this.state.todos[index].id;
+        const response = await fetch(url, {
+            method: 'DELETE'
+        });
+        const todoResponse = await response.json();
+        this.logSuccededRequests();
+        console.log(todoResponse)
     }
 
     sayHello() {
