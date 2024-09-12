@@ -7,17 +7,17 @@ class ClsHello extends Component {
         this.state = {
             age: 10
         }
-
     }
 
     increaseAge() {
-        this.setState(
-            {
-                age: this.state.age++
-            }
-        )
+        console.log('test');
+        this.setState({
+            age: ++this.state.age
+        }, () => {
+            console.log(`Noua varsta este ${this.state.age}`);
+        })
     }
-    
+
     render() {
         console.log('ClsHello render');
         return (
@@ -40,9 +40,9 @@ class ClsHello extends Component {
     }
 
     componentDidMount() {
-        // setInterval(() => {
-        //     this.increaseAge();
-        // }, 1000);
+        setInterval(() => {
+            this.increaseAge();
+        }, 1000);
         console.log('ClsHello mounted');
     }
 

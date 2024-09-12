@@ -122,6 +122,8 @@ class Todo extends Component {
     }
 
     performSearch() {
+        console.log('123');
+        console.log(this);
         this.props.navigate('/todo?s=' + this.search);
     }
 
@@ -135,7 +137,8 @@ class Todo extends Component {
                         console.log(event.target, event.target.value);
                         this.setSearchField(event.target.value);
                     }}></input>
-                    <button onClick={this.performSearch()}>Submit</button>
+                    <button type="button" onClick={this.performSearch.bind(this)}>Submit</button>
+                    {/* <button type="button" onClick={(e) => { this.performSearch() }}>Submit</button> */}
                 </form>
                 <button onClick={this.sayHello.bind(this)}>Say Hello!</button>
                 <table>

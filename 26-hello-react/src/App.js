@@ -1,10 +1,9 @@
-import logo from './logo.svg';
+import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
-import Hello from './components/Hello/Hello';
 import ClsHello from './components/ClsHello/ClsHello';
-import Todo from './components/Todo/Todo';
-import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+import Hello from './components/Hello/Hello';
 import TodoDetails from './components/TodoDetails/TodoDetails';
+import TodoWithNavigate from './components/TodoWithNavigate';
 
 function App() {
   const car = {
@@ -32,7 +31,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Hello />} />
         <Route path='/hello' element={<ClsHello />} />
-        <Route path='/todo' element={<Todo test='Stefan' />} />
+        <Route path='/todo' element={<TodoWithNavigate test='Stefan' />} />
         <Route path='/todo/:id' element={<TodoDetails />} />
       </Routes>
 
