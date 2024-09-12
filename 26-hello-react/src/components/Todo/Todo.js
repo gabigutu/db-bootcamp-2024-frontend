@@ -10,8 +10,11 @@ class Todo extends Component {
     noSuccededRequests = 0;
     nowDate = null;
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+
+        console.log(this.props);
+
         this.state = {
             todos: [],
             users: []
@@ -104,14 +107,22 @@ class Todo extends Component {
         todo.clickedDelete = false;
     }
 
-    sterge(index){
+    sterge(index) {
         const todo = this.state.todos[index];
         todo.clickedDelete = true;
         this.setState({
             todos: this.state.todos
         }, () => {
             this.sendDeleteAndDisplay(index, todo);
-        });   
+        });
+    }
+
+    setSearchField(inputValue) {
+        this.search = inputValue;
+    }
+
+    performSearch() {
+        this.props.navigate('/todo?s=' + this.search);
     }
 
     render() {
@@ -119,6 +130,13 @@ class Todo extends Component {
         return (
             <div>
                 <h2>Todos</h2>
+                <form>
+                    <input onChange={(event) => {
+                        console.log(event.target, event.target.value);
+                        this.setSearchField(event.target.value);
+                    }}></input>
+                    <button onClick={this.performSearch()}>Submit</button>
+                </form>
                 <button onClick={this.sayHello.bind(this)}>Say Hello!</button>
                 <table>
                     <thead>
@@ -137,15 +155,15 @@ class Todo extends Component {
                                 <td>{todo.id}</td>
                                 <td><Link to={'/todo/' + todo.id}>{todo.title}</Link></td>
                                 <td>
-                                    <input type="checkbox" checked={todo.completed} onChange={this.bifeaza.bind(this,index)} disabled={todo.disabled}></input>
+                                    <input type="checkbox" checked={todo.completed} onChange={this.bifeaza.bind(this, index)} disabled={todo.disabled}></input>
                                 </td>
                                 <td>
                                     <button onClick={() => this.sterge(index)} disabled={todo.clickedDelete}>Delete</button>
                                 </td>
                                 <td>
-                                    {this.state.users.find( user => {
-                                        return user.id ===todo.userId
-                                    })?.name || 'Loading...'} 
+                                    {this.state.users.find(user => {
+                                        return user.id === todo.userId
+                                    })?.name || 'Loading...'}
                                 </td>
                                 <td>{this.nowDate}</td>
                             </tr>

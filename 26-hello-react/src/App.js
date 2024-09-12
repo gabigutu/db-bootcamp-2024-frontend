@@ -32,7 +32,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Hello />} />
         <Route path='/hello' element={<ClsHello />} />
-        <Route path='/todo' element={<Todo />} />
+        <Route path='/todo' element={<Todo test='Stefan' />} />
         <Route path='/todo/:id' element={<TodoDetails />} />
       </Routes>
 
